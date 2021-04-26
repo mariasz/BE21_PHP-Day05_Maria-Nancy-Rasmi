@@ -2,7 +2,7 @@
 session_start();
 require_once 'components/db_connect.php';
 // if session is not set this will redirect to login page
-if (!isset($_SESSION[ 'adm' ]) && !isset($_SESSION['user'])) {
+if (!isset($_SESSION[ 'admin' ]) && !isset($_SESSION['user'])) {
    header("Location: index.php" );
     exit;
 }
@@ -12,8 +12,8 @@ if ( isset($_SESSION["user"])) {
    exit;
 }
 
-$id = $_SESSION['adm' ];
-$status = 'adm';
+$id = $_SESSION['admin' ];
+$status = 'admin';
 $sqlSelect = "SELECT * FROM user WHERE status != ? ";
 $stmt = $connect->prepare($sqlSelect);
 $stmt->bind_param("s", $status);
@@ -47,7 +47,7 @@ $connect->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adm-DashBoard</title>
+    <title>Admin-Dashboard</title>
     <?php require_once 'components/boot.php' ?>
     <style type="text/css">
         .img-thumbnail {
@@ -72,12 +72,12 @@ $connect->close();
 </head>
 
 <body>
-    <div class="container">
+    <?php include 'navbar.php' ?>
+    <div class="container w-75 mt-3">
         <div class="row">
             <div class="col-2">
-                <img class="userImage" src="pictures/admavatar.png" alt="Adm avatar">
+                <img class="userImage" src="pictures/avatar-admin.png" alt="Default admin avatar">
                 <p class="">Administrator </p>
-                <a href="logout.php?logout">Sign Out </a>
             </div>
             <div class="col-8 mt-2">
                 <p class='h2'>Users</p>

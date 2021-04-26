@@ -2,7 +2,7 @@
 session_start();
 require_once 'components/db_connect.php';
 // if session is not set this will redirect to login page
-if( !isset($_SESSION['adm']) && !isset($_SESSION['user' ]) ) {
+if( !isset($_SESSION['admin']) && !isset($_SESSION['user' ]) ) {
    header("Location: index.php");
    exit;
   }
@@ -70,6 +70,7 @@ $connect->close();
 </head>
 
 <body>
+    <?php include 'navbar.php' ?>
     <div class="<?php echo $class; ?>" role="alert">
         <p><?php echo ($message) ?? ''; ?></p>
     </div>

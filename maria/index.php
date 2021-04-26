@@ -7,7 +7,7 @@ if (isset($_SESSION[ 'user']) != "") {
    header("Location: home.php");
    exit;
 }
-if (isset($_SESSION['adm' ]) != "") {
+if (isset($_SESSION['admin' ]) != "") {
    header("Location: dashboard.php"); // redirects to home.php
 }
 
@@ -52,8 +52,8 @@ if (isset ($_POST['btn-login'])) {
        $row = $result->fetch_assoc();
        $count = $result->num_rows;
        if ($count == 1 && $row['password'] == $password) {
-           if($row['status'] == 'adm'){
-           $_SESSION['adm'] = $row['id'];          
+           if($row['status'] == 'admin'){
+           $_SESSION['admin'] = $row['id'];          
            header( "Location: dashboard.php");}
            else{
                $_SESSION['user'] = $row['id'];
@@ -81,6 +81,7 @@ $connect->close();
 </head>
 
 <body>
+    <?php include 'navbar.php' ?>
     <div class="container">
         <form class="w-75" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>"
             autocomplete="off">

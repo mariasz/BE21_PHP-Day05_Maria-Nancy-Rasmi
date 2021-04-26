@@ -44,14 +44,13 @@ $connect->close();
 </head>
 
 <body>
-    <div class="container">
+    <?php include 'navbar.php' ?>
+    <div class="container w-75 mt-3">
         <div class="hero">
             <img class="userImage" src="pictures/<?php echo $row['picture']; ?>"
                 alt="<?php echo $row['first_name']; ?>">
             <p class="text-white">Hi <?php  echo $row['first_name']; ?></p>
         </div>
-        <a href="logout.php?logout"> Sign Out</a>
-        <a href="update.php?id=<?php echo $_SESSION['user'] ?>">Update your profile</a>
     </div>
 </body>
 

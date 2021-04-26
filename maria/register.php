@@ -3,7 +3,7 @@ session_start(); // start a new session or continues the previous
 if ( isset($_SESSION['user']) != "") {
    header("Location: home.php" ); // redirects to home.php
 }
-if (isset($_SESSION[ 'adm' ]) != "") {
+if (isset($_SESSION[ 'admin' ]) != "") {
    header("Location: dashboard.php"); // redirects to home.php
 }
 require_once  'components/db_connect.php';
@@ -121,6 +121,7 @@ $connect->close();
 </head>
 
 <body>
+    <?php include 'navbar.php' ?>
     <div class="container">
         <form class="w-75" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>"
             autocomplete="off" enctype="multipart/form-data">
